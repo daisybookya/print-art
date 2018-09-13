@@ -10,7 +10,24 @@ import InforContainer from './component/infor/InforContainer'
 
 import './css/App.css'
 const { Content } = Layout;
-
+const routes = [
+  {
+    path:'/',
+    component:MainPage
+  },
+  {
+    path:'/intro',
+    component:IntroContainer
+  },
+  {
+    path:'/exhibition',
+    component:ExhibitContainer
+  },
+  {
+    path:'/infor',
+    component:InforContainer
+  }
+]
 class App extends Component {
   render() {
     return (
@@ -19,10 +36,12 @@ class App extends Component {
             <Header></Header>
             <BackTop />
             <Content style={{padding:'10px 30px',background:'#fff'}}>
-              <Route exact path="/" component={MainPage} />
-              <Route path="/intro" component={IntroContainer} />
-              <Route path="/exhibition" component={ExhibitContainer} />
-              <Route path="/infor" component={InforContainer} />
+              {
+                routes.map(route=>{
+                  if(route.path === '/') return <Route exact path={route.path} component={route.component} />
+                  return <Route path={route.path} component={route.component} />
+                })
+              }
             </Content>
             <Route component={Foot} />                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
       </Layout>
