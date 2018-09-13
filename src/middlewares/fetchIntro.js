@@ -2,7 +2,7 @@
 const onFetchIntro = store => next => action =>{
 
     if(action.type !== 'FETCH_INTRO_DATA') return next(action)
-    const JSONurl = "http://localhost:5555/intro"
+    const JSONurl = `${process.env.PUBLIC_URL}/introduce.json`
 
     if(store.getState().introIsLoad){
         fetch(JSONurl,{
@@ -13,10 +13,10 @@ const onFetchIntro = store => next => action =>{
             return response.json()
         })
         .then((data)=>{
-            const initData = data.map(item=>{
+            const initData = data.intro.map(item=>{
                 return Object.assign({},item)
             })
-            console.log(`onFetchIntro/`,initData)
+            //console.log(`onFetchIntro/`,initData)
             return action.callback(initData,store.dispatch)
         })
         .catch(error=>{throw new Error(error.message)})

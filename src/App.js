@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Layout,BackTop } from 'antd';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route ,HashRouter } from "react-router-dom";
 import Header from './component/layout/Header'
 import Foot from './component/layout/Foot'
 import MainPage from './component/layout/MainPage'
@@ -31,21 +31,20 @@ const routes = [
 class App extends Component {
   render() {
     return (
-      <Router>
+      <HashRouter>
           <Layout className="layout">
             <Header></Header>
             <BackTop />
             <Content style={{padding:'10px 30px',background:'#fff'}}>
               {
-                routes.map(route=>{
-                  if(route.path === '/') return <Route exact path={route.path} component={route.component} />
-                  return <Route path={route.path} component={route.component} />
-                })
+                routes.map(route=>
+                  <Route exact path={route.path} component={route.component} key={route.path} />
+                )
               }
             </Content>
             <Route component={Foot} />                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
       </Layout>
-    </Router>
+    </HashRouter>
     );
   }
 }

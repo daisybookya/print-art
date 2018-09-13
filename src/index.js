@@ -17,7 +17,7 @@ const store = createStore(reducer,applyMiddleware(fetchIntro,fetchInforList,fetc
 ReactDOM.render(
     <Provider store={store}>
         <Router>
-        <Route path="/" component={App} />
+            <Route path="/" component={App} />
         </Router>
     </Provider>
     , document.getElementById('root'));

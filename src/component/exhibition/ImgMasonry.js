@@ -22,7 +22,7 @@ const ImgMasonry = (props:{data:Object,loading:boolean}) => {
     const ImgLink = ({url,imageUrl}) => (
         <div className="layer">
           <a href={url} target="_blank">>查看放大圖片</a>
-          {imageUrl !== null ? <a className="btn-pin" data-pin-do="buttonPin" data-pin-media={imageUrl.url} data-pin-custom="true" href="https://www.pinterest.com/pin/create/button/"><img src="https://addons.opera.com/media/extensions/55/19155/1.1-rev1/icons/icon_64x64.png" width="25" height="25" /></a>:''}
+          {imageUrl !== null ? <a className="btn-pin" target="_blank" data-pin-do="buttonPin" data-pin-custom="true" href={`https://www.pinterest.com/pin/create/button/?url=${url}&media=${imageUrl.url}`}><img src="https://addons.opera.com/media/extensions/55/19155/1.1-rev1/icons/icon_64x64.png" width="25" height="25" /></a>:''}
         </div>
       );
     return ( 
