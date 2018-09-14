@@ -11,6 +11,9 @@
   text-align: center;
   padding: 25px 0; }
 
+.ant-list-item-action > li {
+  text-align: left; }
+
 .img-content {
   text-align: center; }
   .img-content > button {
